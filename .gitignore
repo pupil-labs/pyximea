@@ -2,8 +2,12 @@
 __pycache__/
 *.py[cod]
 
+# C source
+*.c
+
 # C extensions
 *.so
+
 
 # Distribution / packaging
 .Python
