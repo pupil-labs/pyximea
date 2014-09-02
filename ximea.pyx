@@ -30,7 +30,6 @@ cpdef handle_xi_error(xi.XI_RETURN ret):
             error = error_codes[ret]
         except KeyError:
             error = ("UNKNOWN","Error not defined in API")
-
         if ret == 103:
             raise XI_Wrong_Param_Type_Error("Wrong Paramter Type")
         elif ret == 101:
@@ -192,7 +191,7 @@ cdef class Xi_Camera:
         # print self._xi_image.width,self._xi_image.height,self._xi_image.bp_size,self._xi_image.tsSec,self._xi_image.nframe
 
         cdef int [:, :, :] carr_view #dummy init for compiler....
-        img_array = np.asarray(<np.uint8_t[:self._xi_image.bp_size,]> self._xi_image.bp).reshape((self._xi_image.height,self._xi_image.width))
+        img_array = np.asarray(<np.uint8_t[:self._xi_image.bp_size]> self._xi_image.bp).reshape((self._xi_image.height,self._xi_image.width))
         # img_array = np.asarray(<np.uint8_t[:self._xi_image.height*self._xi_image.width,]> self._xi_image.bp).reshape((self._xi_image.height,self._xi_image.width))
         return img_array
 
