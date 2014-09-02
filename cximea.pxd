@@ -14,80 +14,80 @@ cdef extern from "m3api/xiApi.h": #ifndef apple:  "xiApi.h"
 
     # Error codes xiApi
     cdef enum XI_RET:
-        XI_OK                             = 0, # Function call succeeded
-        XI_ALID_HANDLE                 = 1, # Invalid handle
-        XI_READREG                        = 2, # Register read error
-        XI_WRITEREG                       = 3, # Register write error
-        XI_FREE_RESOURCES                 = 4, # Freeing resiurces error
-        XI_FREE_CHANNEL                   = 5, # Freeing channel error
-        XI_FREE_BANDWIDTH                 = 6, # Freeing bandwith error
-        XI_READBLK                        = 7, # Read block error
-        XI_WRITEBLK                       = 8, # Write block error
-        XI_NO_IMAGE                       = 9, # No image
-        XI_TIME                       =10, # Timeout
-        XI_ALID_ARG                    =11, # Invalid arguments supplied
-        XI_NOT_SUPPORTED                  =12, # Not supported
-        XI_ISOCH_ATTACH_BUFFERS           =13, # Attach buffers error
-        XI_GET_OVERLAPPED_RESULT          =14, # Overlapped result
-        XI_MEMORY_ALLOCATION              =15, # Memory allocation error
-        XI_DLLCONTEXTISNULL               =16, # DLL context is NULL
-        XI_DLLCONTEXTISNONZERO            =17, # DLL context is non zero
-        XI_DLLCONTEXTEXIST                =18, # DLL context exists
-        XI_TOOMANYDEVICES                 =19, # Too many devices connected
-        XI_ERRORCAMCONTEXT                =20, # Camera context error
-        XI_UNKNOWN_HARDWARE               =21, # Unknown hardware
-        XI_ALID_TM_FILE                =22, # Invalid TM file
-        XI_ALID_TM_TAG                 =23, # Invalid TM tag
-        XI_OMPLETE_TM                  =24, # Incomplete TM
-        XI_BUS_RESET_FAILED               =25, # Bus reset error
-        XI_NOT_IMPLEMENTED                =26, # Not implemented
-        XI_SHAD_TOOBRIGHT              =27, # Shading too bright
-        XI_SHAD_TOODARK                =28, # Shading too dark
-        XI_TOO_LOW_GA                  =29, # Gain is too low
-        XI_ALID_BPL                    =30, # Invalid bad pixel list
-        XI_BPL_REALLOC                    =31, # Bad pixel list realloc error
-        XI_ALID_PIXEL_LIST             =32, # Invalid pixel list
-        XI_ALID_FFS                    =33, # Invalid Flash File System
-        XI_ALID_PROFILE                =34, # Invalid profile
-        XI_ALID_CALIBRATION            =35, # Invalid calibration
-        XI_ALID_BUFFER                 =36, # Invalid buffer
-        XI_ALID_DATA                   =38, # Invalid data
-        XI_TGBUSY                         =39, # Timing generator is busy
-        XI_IO_WRONG                       =40, # Wrong operation open/write/read/close
-        XI_ACQUISITION_ALREADY_UP         =41, # Acquisition already started
-        XI_OLD_DRIVER_VERSION             =42, # Old version of device driver installed to the system.
-        XI_GET_LAST_ERROR                 =43, # To get error code please call GetLastError function.
-        XI_CANT_PROCESS                   =44, # Data can't be processed
-        XI_ACQUISITION_STOPED             =45, # Acquisition has been stopped. It should be started before GetImage.
-        XI_ACQUISITION_STOPED_WERR        =46, # Acquisition has been stoped with error.
-        XI_ALID_UT_ICC_PROFILE      =47, # Input ICC profile missed or corrupted
-        XI_ALID_UT_ICC_PROFILE     =48, # Output ICC profile missed or corrupted
-        XI_DEVICE_NOT_READY               =49, # Device not ready to operate
-        XI_SHAD_TOOCONTRAST            =50, # Shading too contrast
-        XI_ALREADY_TIALIZED            =51, # Modile already initialized
-        XI_NOT_ENOUGH_PRIVILEGES          =52, # Application doesn't enough privileges(one or more app
-        XI_NOT_COMPATIBLE_DRIVER          =53, # Installed driver not compatible with current software
-        XI_TM_ALID_RESOURCE            =54, # TM file was not loaded successfully from resources
-        XI_DEVICE_HAS_BEEN_RESETED        =55, # Device has been reseted, abnormal initial state
-        XI_NO_DEVICES_FOUND               =56, # No Devices Found
-        XI_RESOURCE_OR_FUNCTION_LOCKED    =57, # Resource(device) or function locked by mutex
-        XI_BUFFER_SIZE_TOO_SMALL          =58, # Buffer provided by user is too small
-        XI_UNKNOWN_PARAM                  =100, # Unknown parameter
-        XI_WRONG_PARAM_VALUE              =101, # Wrong parameter value
-        XI_WRONG_PARAM_TYPE               =103, # Wrong parameter type
-        XI_WRONG_PARAM_SIZE               =104, # Wrong parameter size
-        XI_BUFFER_TOO_SMALL               =105, # Input buffer too small
-        XI_NOT_SUPPORTED_PARAM            =106, # Parameter info not supported
-        XI_NOT_SUPPORTED_PARAM_O       =107, # Parameter info not supported
-        XI_NOT_SUPPORTED_DATA_FORMAT      =108, # Data format not supported
-        XI_READ_ONLY_PARAM                =109, # Read only parameter
-        XI_BANDWIDTH_NOT_SUPPORTED        =111, # This camera does not support currently available bandwidth
-        XI_ALID_FFS_FILE_NAME          =112, # FFS file selector is invalid or NULL
-        XI_FFS_FILE_NOT_FOUND             =113, # FFS file not found
-        XI_PROC_OTHER_ERROR               =201, # Processing error - other
-        XI_PROC_PROCESS_ERROR          =202, # Error while image processing.
-        XI_PROC_UT_FORMAT_UNSUPPORTED  =203, # Input format is not supported for processing.
-        XI_PROC_UT_FORMAT_UNSUPPORTED =204, # Output format is not supported for processing.
+        XI_OK                             =  0, #Function call succeeded
+        XI_INVALID_HANDLE                 =  1, #Invalid handle
+        XI_READREG                        =  2, #Register read error
+        XI_WRITEREG                       =  3, #Register write error
+        XI_FREE_RESOURCES                 =  4, #Freeing resiurces error
+        XI_FREE_CHANNEL                   =  5, #Freeing channel error
+        XI_FREE_BANDWIDTH                 =  6, #Freeing bandwith error
+        XI_READBLK                        =  7, #Read block error
+        XI_WRITEBLK                       =  8, #Write block error
+        XI_NO_IMAGE                       =  9, #No image
+        XI_TIMEOUT                        = 10, #Timeout
+        XI_INVALID_ARG                    = 11, #Invalid arguments supplied
+        XI_NOT_SUPPORTED                  = 12, #Not supported
+        XI_ISOCH_ATTACH_BUFFERS           = 13, #Attach buffers error
+        XI_GET_OVERLAPPED_RESULT          = 14, #Overlapped result
+        XI_MEMORY_ALLOCATION              = 15, #Memory allocation error
+        XI_DLLCONTEXTISNULL               = 16, #DLL context is NULL
+        XI_DLLCONTEXTISNONZERO            = 17, #DLL context is non zero
+        XI_DLLCONTEXTEXIST                = 18, #DLL context exists
+        XI_TOOMANYDEVICES                 = 19, #Too many devices connected
+        XI_ERRORCAMCONTEXT                = 20, #Camera context error
+        XI_UNKNOWN_HARDWARE               = 21, #Unknown hardware
+        XI_INVALID_TM_FILE                = 22, #Invalid TM file
+        XI_INVALID_TM_TAG                 = 23, #Invalid TM tag
+        XI_INCOMPLETE_TM                  = 24, #Incomplete TM
+        XI_BUS_RESET_FAILED               = 25, #Bus reset error
+        XI_NOT_IMPLEMENTED                = 26, #Not implemented
+        XI_SHADING_TOOBRIGHT              = 27, #Shading too bright
+        XI_SHADING_TOODARK                = 28, #Shading too dark
+        XI_TOO_LOW_GAIN                   = 29, #Gain is too low
+        XI_INVALID_BPL                    = 30, #Invalid bad pixel list
+        XI_BPL_REALLOC                    = 31, #Bad pixel list realloc error
+        XI_INVALID_PIXEL_LIST             = 32, #Invalid pixel list
+        XI_INVALID_FFS                    = 33, #Invalid Flash File System
+        XI_INVALID_PROFILE                = 34, #Invalid profile
+        XI_INVALID_CALIBRATION            = 35, #Invalid calibration
+        XI_INVALID_BUFFER                 = 36, #Invalid buffer
+        XI_INVALID_DATA                   = 38, #Invalid data
+        XI_TGBUSY                         = 39, #Timing generator is busy
+        XI_IO_WRONG                       = 40, #Wrong operation open/write/read/close
+        XI_ACQUISITION_ALREADY_UP         = 41, #Acquisition already started
+        XI_OLD_DRIVER_VERSION             = 42, #Old version of device driver installed to the system
+        XI_GET_LAST_ERROR                 = 43, #To get error code please call GetLastError function.
+        XI_CANT_PROCESS                   = 44, #Data can't be processed
+        XI_ACQUISITION_STOPED             = 45, #Acquisition has been stopped. It should be started b
+        XI_ACQUISITION_STOPED_WERR        = 46, #Acquisition has been stoped with error.
+        XI_INVALID_INPUT_ICC_PROFILE      = 47, #Input ICC profile missed or corrupted
+        XI_INVALID_OUTPUT_ICC_PROFILE     = 48, #Output ICC profile missed or corrupted
+        XI_DEVICE_NOT_READY               = 49, #Device not ready to operate
+        XI_SHADING_TOOCONTRAST            = 50, #Shading too contrast
+        XI_ALREADY_INITIALIZED            = 51, #Modile already initialized
+        XI_NOT_ENOUGH_PRIVILEGES          = 52, #Application doesn't enough privileges(one or more ap
+        XI_NOT_COMPATIBLE_DRIVER          = 53, #Installed driver not compatible with current softwar
+        XI_TM_INVALID_RESOURCE            = 54, #TM file was not loaded successfully from resources
+        XI_DEVICE_HAS_BEEN_RESETED        = 55, #Device has been reseted, abnormal initial state
+        XI_NO_DEVICES_FOUND               = 56, #No Devices Found
+        XI_RESOURCE_OR_FUNCTION_LOCKED    = 57, #Resource(device) or function locked by mutex
+        XI_BUFFER_SIZE_TOO_SMALL          = 58, #Buffer provided by user is too small
+        XI_UNKNOWN_PARAM                  =100, #Unknown parameter
+        XI_WRONG_PARAM_VALUE              =101, #Wrong parameter value
+        XI_WRONG_PARAM_TYPE               =103, #Wrong parameter type
+        XI_WRONG_PARAM_SIZE               =104, #Wrong parameter size
+        XI_BUFFER_TOO_SMALL               =105, #Input buffer too small
+        XI_NOT_SUPPORTED_PARAM            =106, #Parameter info not supported
+        XI_NOT_SUPPORTED_PARAM_INFO       =107, #Parameter info not supported
+        XI_NOT_SUPPORTED_DATA_FORMAT      =108, #Data format not supported
+        XI_READ_ONLY_PARAM                =109, #Read only parameter
+        XI_BANDWIDTH_NOT_SUPPORTED        =111, #This camera does not support currently available ba
+        XI_INVALID_FFS_FILE_NAME          =112, #FFS file selector is invalid or NULL
+        XI_FFS_FILE_NOT_FOUND             =113, #FFS file not found
+        XI_PROC_OTHER_ERROR               =201, #Processing error - other
+        XI_PROC_PROCESSING_ERROR          =202, #Error while image processing.
+        XI_PROC_INPUT_FORMAT_UNSUPPORTED  =203, #Input format is not supported for processing.
+        XI_PROC_OUTPUT_FORMAT_UNSUPPORTED =204, #Output format is not supported for processing.
 
     #-------------------------------------------------------------------------------------------------------------------
     # xiAPI enumerators
@@ -95,7 +95,7 @@ cdef extern from "m3api/xiApi.h": #ifndef apple:  "xiApi.h"
     cdef enum XI_DEBUG_LEVEL:
         XI_DL_DETAIL                 =0, # Same as trace plus locking resources
         XI_DL_TRACE                  =1, # Information level.
-        XI_DL_WARN                =2, # Warning level.
+        XI_DL_WARNING                =2, # Warning level.
         XI_DL_ERROR                  =3, # Error level.
         XI_DL_FATAL                  =4, # Fatal error level.
         XI_DL_DISABLED               =100, # Print no errors at all.
@@ -133,8 +133,8 @@ cdef extern from "m3api/xiApi.h": #ifndef apple:  "xiApi.h"
     # structure containing information about trigger source
     cdef enum XI_TRG_SOURCE:
         XI_TRG_OFF                   =0, # Camera works in free run mode.
-        XI_TRG_EDGE_RIS           =1, # External trigger (rising edge).
-        XI_TRG_EDGE_FALL          =2, # External trigger (falling edge).
+        XI_TRG_EDGE_RISING           =1, # External trigger (rising edge).
+        XI_TRG_EDGE_FALLING          =2, # External trigger (falling edge).
         XI_TRG_SOFTWARE              =3, # Software(manual) trigger.
 
     # structure containing information about trigger functionality
@@ -178,13 +178,13 @@ cdef extern from "m3api/xiApi.h": #ifndef apple:  "xiApi.h"
         XI_LED_HEARTBEAT             =0, # set led to blink if link is ok, (led 1), heartbeat (led 2)
         XI_LED_TRIGGER_ACTIVE        =1, # set led to blink if trigger detected
         XI_LED_EXT_EVENT_ACTIVE      =2, # set led to blink if external signal detected
-        XI_LED_L                  =3, # set led to blink if link is ok
+        XI_LED_LINK                  =3, # set led to blink if link is ok
         XI_LED_ACQUISITION           =4, # set led to blink if data streaming
         XI_LED_EXPOSURE_ACTIVE       =5, # set led to blink if sensor integration time
         XI_LED_FRAME_ACTIVE          =6, # set led to blink if device busy/not busy
         XI_LED_OFF                   =7, # set led to zero
         XI_LED_ON                    =8, # set led to one
-        XI_LED_BL                 =9, # set led to ~1Hz blink
+        XI_LED_BLINK                 =9, # set led to ~1Hz blink
 
     # structure containing information about parameters type
     cdef enum XI_PRM_TYPE:
@@ -200,14 +200,14 @@ cdef extern from "m3api/xiApi.h": #ifndef apple:  "xiApi.h"
 
     # Downsampling types
     cdef enum XI_DOWNSAMPL_TYPE:
-        XI_B                   =0, # Downsampling is using  binning
-        XI_SKIPP                  =1, # Downsampling is using  skipping
+        XI_BINNING                   =0, # Downsampling is using  binning
+        XI_SKIPPING                  =1, # Downsampling is using  skipping
 
 
     # Shutter mode types
     cdef enum XI_SHUTTER_TYPE:
         XI_SHUTTER_GLOBAL            =0, # Sensor Global Shutter(CMOS sensor)
-        XI_SHUTTER_ROLL           =1, # Sensor Electronic Rolling Shutter(CMOS sensor)
+        XI_SHUTTER_ROLLING           =1, # Sensor Electronic Rolling Shutter(CMOS sensor)
         XI_SHUTTER_GLOBAL_RESET_RELEASE=2, # Sensor Global Reset Release Shutter(CMOS sensor)
 
 
@@ -220,7 +220,7 @@ cdef extern from "m3api/xiApi.h": #ifndef apple:  "xiApi.h"
 
     # structure containing information about options for selection of camera before onening
     cdef enum XI_OPEN_BY:
-        XI_OPEN_BY_T_PATH         =0, # Open camera by its hardware path
+        XI_OPEN_BY_INST_PATH         =0, # Open camera by its hardware path
         XI_OPEN_BY_SN                =1, # Open camera by its serial number
         XI_OPEN_BY_USER_ID           =2, # open camera by its custom user ID
 
