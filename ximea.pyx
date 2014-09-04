@@ -22,8 +22,6 @@ class XI_Wrong_Param_Type_Error(Exception):
         self.arg = arg
 
 
-
-
 cpdef handle_xi_error(xi.XI_RETURN ret):
     if ret !=0:
         try:
@@ -175,23 +173,35 @@ cdef class Xi_Camera:
         try:
             lvl = logger_levels[level]
         except KeyError:
-            raise Exception("Level '%s' not avaible in API"%level)
+            raise XI_Error("Level '%s' not avaible in API"%level)
         handle_xi_error( xi.xiSetParamInt(self._xi_device,XI_PRM_DEBUG_LEVEL,lvl) )
 
 
 
     def get_image(self, xi.DWORD timeout_ms=500):
+        '''
+        return image as numpy array (shape= width,height,chan)
+        '''
         if not self.aquisition_active:
             self.start_aquisition()
         cdef xi.XI_RETURN ret
         ret = xi.xiGetImage(self._xi_device,timeout_ms,&self._xi_image)
         if ret != 0:
             handle_xi_error(ret)
-            raise Error("Image aquisition error")
+            raise XI_Error("Image aquisition error")
         # print self._xi_image.width,self._xi_image.height,self._xi_image.bp_size,self._xi_image.tsSec,self._xi_image.nframe
 
         cdef int [:, :, :] carr_view #dummy init for compiler....
-        img_array = np.asarray(<np.uint8_t[:self._xi_image.bp_size]> self._xi_image.bp).reshape((self._xi_image.height,self._xi_image.width))
+        if self._xi_image.frm == xi.XI_MONO8 or self._xi_image.frm == xi.XI_RAW8:
+            img_array = np.asarray(<np.uint8_t[:self._xi_image.bp_size]> self._xi_image.bp).reshape((self._xi_image.height,self._xi_image.width))
+        elif self._xi_image.frm == xi.XI_MONO16 or self._xi_image.frm == xi.XI_RAW16:
+            img_array = np.asarray(<np.uint16_t[:self._xi_image.bp_size]> self._xi_image.bp).reshape((self._xi_image.height,self._xi_image.width))
+        elif self._xi_image.frm == xi.XI_RGB24:
+            img_array = np.asarray(<np.uint8_t[:self._xi_image.bp_size]> self._xi_image.bp).reshape((self._xi_image.height,self._xi_image.width,3))
+        elif self._xi_image.frm == xi.XI_RGB32:
+            img_array = np.asarray(<np.uint8_t[:self._xi_image.bp_size]> self._xi_image.bp).reshape((self._xi_image.height,self._xi_image.width,4))
+        else:
+            raise xi.XI_Error("Not implemented.")
         # img_array = np.asarray(<np.uint8_t[:self._xi_image.height*self._xi_image.width,]> self._xi_image.bp).reshape((self._xi_image.height,self._xi_image.width))
         return img_array
 
