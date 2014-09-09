@@ -11,8 +11,8 @@ if platform.system() == 'Darwin':
     link_args = [f, 'm3api']
     libs = []
 else:
-    includes = []
-    libs = []
+    includes = [numpy.get_include()]
+    libs = ['m3api']
     link_args = []
 
 

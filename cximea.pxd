@@ -1,7 +1,4 @@
-
-
-cdef extern from "m3api/xiApi.h": #ifndef apple:  "xiApi.h"
-
+cdef extern from  "m3api/xiApi.h":
 
     ctypedef int XI_RETURN
     ctypedef unsigned DWORD

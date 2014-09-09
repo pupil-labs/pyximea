@@ -30,8 +30,9 @@ cpdef handle_xi_error(xi.XI_RETURN ret):
             error = ("UNKNOWN","Error not defined in API")
         if ret == 103:
             raise XI_Wrong_Param_Type_Error("Wrong Paramter Type")
-        elif ret == 101:
+        elif ret == 56:
             logger.warning(error[0]+": "+error[1])
+            raise XI_Error("Device could not be opended.")
         else:
             logger.warning(error[0]+": "+error[1])
             # raise XI_Error(error[0]+": "+error[1])
@@ -73,8 +74,6 @@ cdef class Xi_Camera:
         else:
             raise Exception("Please init with at one device selction argument.")
 
-        if self._xi_device == NULL:
-            raise Exception("Could not Open Device.")
 
 
     def __init__(self, xi.DWORD DevID=-1,const char* user_id=NULL,const char* serial=NULL,const char* hw_path=NULL):
