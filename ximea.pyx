@@ -194,7 +194,7 @@ cdef class Xi_Camera:
         if self._xi_image.frm == xi.XI_MONO8 or self._xi_image.frm == xi.XI_RAW8:
             img_array = np.asarray(<np.uint8_t[:self._xi_image.bp_size]> self._xi_image.bp).reshape((self._xi_image.height,self._xi_image.width))
         elif self._xi_image.frm == xi.XI_MONO16 or self._xi_image.frm == xi.XI_RAW16:
-            img_array = np.asarray(<np.uint16_t[:self._xi_image.bp_size]> self._xi_image.bp).reshape((self._xi_image.height,self._xi_image.width))
+            img_array = np.asarray(<np.uint8_t[:self._xi_image.bp_size]> self._xi_image.bp).reshape((self._xi_image.height,self._xi_image.width,2))
         elif self._xi_image.frm == xi.XI_RGB24:
             img_array = np.asarray(<np.uint8_t[:self._xi_image.bp_size]> self._xi_image.bp).reshape((self._xi_image.height,self._xi_image.width,3))
         elif self._xi_image.frm == xi.XI_RGB32:
